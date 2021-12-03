@@ -1,0 +1,34 @@
+# TL;DR 
+# docker-compose -f docker-compose.listener.yml up
+
+version: '2.3'
+
+services:
+
+  listener:
+    build: .
+    restart: unless-stopped
+    network_mode: service:husarnet-listener
+    command:
+      - bash
+      - -c
+      - |
+          export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+          export FASTRTPS_DEFAULT_PROFILES_FILE=/fastdds_client.xml
+          ros2 run demo_nodes_py listener
+
+  husarnet-listener:
+    image: husarnet/husarnet
+    restart: unless-stopped
+    volumes:
+      - /var/lib/husarnet  # This will persist your Husarnet Client keys, thus IP of the container will be stable/the same between (re)boots
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0  # Husarnet is using IPv6 for the internal connections
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    environment: 
+      - HOSTNAME=listener
+    env_file: 
+      - ./.env  # create .env file in the same folder

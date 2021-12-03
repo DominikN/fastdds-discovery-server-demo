@@ -1,0 +1,34 @@
+# TL;DR 
+# docker-compose -f docker-compose.discovery-server.yml up
+
+version: '2.3'
+
+services:
+
+  discovery-server:
+    build: .
+    restart: unless-stopped
+    network_mode: service:husarnet-discovery-server
+    command:
+      - bash
+      - -c
+      - |
+          export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+          export FASTRTPS_DEFAULT_PROFILES_FILE=/fastdds_server.xml
+          ros2 run demo_nodes_py listener
+
+  husarnet-discovery-server:
+    image: husarnet/husarnet
+    restart: unless-stopped
+    volumes:
+      - /var/lib/husarnet  # This will persist your Husarnet Client keys, thus IP of the container will be stable/the same between (re)boots
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0  # Husarnet is using IPv6 for the internal connections
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    environment: 
+      - HOSTNAME=ddsdiscoveryserver
+    env_file: 
+      - ./.env  # create .env file in the same folder

@@ -1,0 +1,35 @@
+# TL;DR 
+# docker-compose -f docker-compose.talker.yml up
+
+version: '2.3'
+
+services:
+
+  talker:
+    build: .
+    restart: unless-stopped
+    network_mode: service:husarnet-talker
+    command:
+      - bash
+      - -c
+      - |
+          export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+          export FASTRTPS_DEFAULT_PROFILES_FILE=/fastdds_client.xml
+          ros2 run demo_nodes_py talker
+
+  husarnet-talker:
+    image: husarnet/husarnet
+    restart: unless-stopped
+    volumes:
+      - /var/lib/husarnet  # This will persist your Husarnet Client keys, thus IP of the container will be stable/the same between (re)boots
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0  # Husarnet is using IPv6 for the internal connections
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    environment: 
+      - HOSTNAME=talker
+    env_file: 
+      - ./.env  # create .env file in the same folder
+

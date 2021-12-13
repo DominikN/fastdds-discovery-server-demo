@@ -6,8 +6,8 @@ version: '2.3'
 services:
 
   listener:
-    # build: ./container
-    image: ghcr.io/dominikn/ros-galactic-fastdds-v240
+    # build: ./docker_image
+    image: ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
     restart: unless-stopped
     network_mode: service:husarnet-listener
     environment:

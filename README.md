@@ -1,5 +1,7 @@
 # fastdds-discovery-server-demo
 
+## Intro
+
 Using [FastDDS Discovery Server](https://docs.ros.org/en/foxy/Tutorials/Discovery-Server/Discovery-Server.html) over the Internet with VPN.
 
 According to docs: *the Fast DDS Discovery Server protocol is a feature that offers a centralized dynamic discovery mechanism, as opposed to the distributed mechanism used in DDS by default.*
@@ -31,7 +33,7 @@ Fast DDS is not a default RMW in ROS 2 Galactic. Also *hostnames* for DDS Discov
 
 Building `Fast DDS v2.4.0` from source takes a while (especially for `ARM64`) so you can use a prebuild image from this repo:
 
-```
+```bash
 docker pull ghcr.io/dominikn/ros-galactic-fastdds-v240
 ```
 

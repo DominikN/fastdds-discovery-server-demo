@@ -6,13 +6,14 @@ version: '2.3'
 services:
 
   discovery-server:
-    build: .
+    build: ./container
     restart: unless-stopped
     network_mode: service:husarnet-discovery-server
     command:
       - bash
       - -c
       - |
+          /wait_for_discovery_server.sh
           source /fastdds_overlay/install/setup.bash
           export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
           export FASTRTPS_DEFAULT_PROFILES_FILE=/fastdds_server.xml

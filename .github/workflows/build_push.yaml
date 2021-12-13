@@ -31,8 +31,8 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
-        context: ./container
-        file: ./container/Dockerfile
+        context: ./docker_image
+        file: ./docker_image/Dockerfile
         platforms: linux/arm64, linux/amd64
         push: true
         tags: ghcr.io/dominikn/ros-galactic-fastdds-v240

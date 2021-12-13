@@ -1,4 +1,4 @@
-# TL;DR 
+# TL;DR
 # docker-compose -f docker-compose.discovery-server.yml up
 
 version: '2.3'
@@ -13,9 +13,10 @@ services:
       - bash
       - -c
       - |
+          source /fastdds_overlay/install/setup.bash
           export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
           export FASTRTPS_DEFAULT_PROFILES_FILE=/fastdds_server.xml
-          ros2 run demo_nodes_py listener
+          ros2 run demo_nodes_cpp listener
 
   husarnet-discovery-server:
     image: husarnet/husarnet
@@ -28,7 +29,7 @@ services:
       - NET_ADMIN
     devices:
       - /dev/net/tun
-    environment: 
+    environment:
       - HOSTNAME=ddsdiscoveryserver
-    env_file: 
+    env_file:
       - ./.env  # create .env file in the same folder

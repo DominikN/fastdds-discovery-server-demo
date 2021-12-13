@@ -1,4 +1,4 @@
-# TL;DR 
+# TL;DR
 # docker-compose -f docker-compose.talker.yml up
 
 version: '2.3'
@@ -13,9 +13,10 @@ services:
       - bash
       - -c
       - |
+          source /fastdds_overlay/install/setup.bash
           export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
           export FASTRTPS_DEFAULT_PROFILES_FILE=/fastdds_client.xml
-          ros2 run demo_nodes_py talker
+          ros2 run demo_nodes_cpp talker
 
   husarnet-talker:
     image: husarnet/husarnet
@@ -28,8 +29,7 @@ services:
       - NET_ADMIN
     devices:
       - /dev/net/tun
-    environment: 
+    environment:
       - HOSTNAME=talker
-    env_file: 
+    env_file:
       - ./.env  # create .env file in the same folder
-

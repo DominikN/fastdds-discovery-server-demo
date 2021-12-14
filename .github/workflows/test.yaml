@@ -1,13 +1,13 @@
-name: Test
+name: Test a docker deployment
 
 on:
   workflow_run:
-    workflows: ["Build"]
+    workflows: ["Build a Docker Image"]
     types:
       - completed
   
 jobs:
-  start-discovery-server:
+  test-discovery-server:
     runs-on: ubuntu-20.04
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
@@ -25,7 +25,7 @@ jobs:
     - name: Check if the log contains Hello World string
       run: if [[ $(grep 'Hello World' output.txt | wc -l) -eq 0 ]]; then exit 1; fi
 
-  start-listener:
+  test-listener:
     runs-on: ubuntu-20.04
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
@@ -43,7 +43,7 @@ jobs:
     - name: Check if the log contains Hello World string
       run: if [[ $(grep 'Hello World' output.txt | wc -l) -eq 0 ]]; then exit 1; fi
 
-  start-talker:
+  test-talker:
     runs-on: ubuntu-20.04
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 

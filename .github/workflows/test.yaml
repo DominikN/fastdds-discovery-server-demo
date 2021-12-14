@@ -23,7 +23,7 @@ jobs:
         docker-compose -f docker-compose.discovery-server.yml up
 
     - name: Exit code of last command
-      run: echo $!
+      run: echo $?
 
   start-listener:
     runs-on: ubuntu-20.04
@@ -41,7 +41,7 @@ jobs:
         docker-compose -f docker-compose.listener.yml up
 
     - name: Exit code of last command
-      run: echo $!
+      run: echo $?
 
   start-talker:
     runs-on: ubuntu-20.04
@@ -59,4 +59,4 @@ jobs:
         docker-compose -f docker-compose.talker.yml up
 
     - name: Exit code of last command
-      run: echo $!
+      run: echo $?

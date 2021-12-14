@@ -17,10 +17,10 @@ jobs:
 
     - name: Deploy Fast DDS Discovery Server
       continue-on-error: true
-      timeout-minutes: 1
+      # timeout-minutes: 1
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
-        docker-compose -f docker-compose.discovery-server.yml up
+        timeout 60 docker-compose -f docker-compose.discovery-server.yml up
 
     - name: Exit code of last command
       run: echo $?
@@ -35,10 +35,10 @@ jobs:
   
     - name: Deploy Listener
       continue-on-error: true
-      timeout-minutes: 1
+      # timeout-minutes: 1
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
-        docker-compose -f docker-compose.listener.yml up
+        timeout 60 docker-compose -f docker-compose.listener.yml up
 
     - name: Exit code of last command
       run: echo $?
@@ -53,10 +53,10 @@ jobs:
 
     - name: Deploy Talker
       continue-on-error: true
-      timeout-minutes: 1
+      # timeout-minutes: 1
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
-        docker-compose -f docker-compose.talker.yml up
+        timeout 60 docker-compose -f docker-compose.talker.yml up
 
     - name: Exit code of last command
       run: echo $?

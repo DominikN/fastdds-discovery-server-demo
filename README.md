@@ -4,6 +4,8 @@ Using [FastDDS Discovery Server](https://docs.ros.org/en/foxy/Tutorials/Discover
 
 [![Build/Publish Docker Image](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/build_push.yaml/badge.svg)](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/build_push.yaml)
 
+[![Test](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/test.yaml/badge.svg)](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/test.yaml)
+
 ## Intro
 
 According to the docs: *the Fast DDS Discovery Server protocol is a feature that offers a centralized dynamic discovery mechanism, as opposed to the distributed mechanism used in DDS by default.*
@@ -60,6 +62,7 @@ build: ./docker_image
 Prepare 3 devices (laptop, Raspberry Pi etc.) with Docker and Docker-Compose installed. They could be in the same, or in different Ethernet/WiFi/LTE networks.
 
 > **💡 Tip**
+>
 > You can also run those three Docker Compose deployments on one laptop if you don't want to test it over the Internet
 
 In this demo we will deploy different `docker.compose.yml` files on different devices:

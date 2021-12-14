@@ -39,7 +39,7 @@ This is why we need to build a new Docker Image based on `ros:galactic` with `Fa
 Building `Fast DDS v2.4.0` from source takes a while (especially for `ARM64`) so you can use a prebuild image from this repo:
 
 ```bash
-docker pull ghcr.io/dominikn/ros-galactic-fastdds-v240
+docker pull ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
 ```
 
 ### Local build
@@ -47,7 +47,7 @@ docker pull ghcr.io/dominikn/ros-galactic-fastdds-v240
 If you want to build your own image, modify all `docker-compose.*.yml` files in the repo by replacing line ...
 
 ```yml 
-image: ghcr.io/dominikn/ros-galactic-fastdds-v240
+image: ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
 ```
 
 with ...

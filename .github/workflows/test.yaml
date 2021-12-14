@@ -21,6 +21,7 @@ jobs:
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
         timeout 60 docker-compose -f docker-compose.discovery-server.yml up
+        echo "exit code of last cmd is $?"
 
     - name: Exit code of last command
       run: echo $?
@@ -39,6 +40,7 @@ jobs:
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
         timeout 60 docker-compose -f docker-compose.listener.yml up
+        echo "exit code of last cmd is $?"
 
     - name: Exit code of last command
       run: echo $?
@@ -57,6 +59,7 @@ jobs:
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
         timeout 60 docker-compose -f docker-compose.talker.yml up
+        echo "exit code of last cmd is $?"
 
     - name: Exit code of last command
       run: echo $?

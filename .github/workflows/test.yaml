@@ -1,15 +1,15 @@
-name: Test docker deployment
+name: Test
 
 on:
   workflow_run:
-    workflows: ["Build/Publish Docker Image"]
-    branches: [main]
+    workflows: ["Build"]
     types:
       - completed
   
 jobs:
   start-discovery-server:
     runs-on: ubuntu-20.04
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
     - name: Deploy Fast DDS Discovery Server
@@ -19,6 +19,7 @@ jobs:
         
   start-listener:
     runs-on: ubuntu-20.04
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
     - name: Deploy Fast DDS Discovery Server
@@ -28,6 +29,7 @@ jobs:
       
   start-talker:
     runs-on: ubuntu-20.04
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
     - name: Deploy Fast DDS Discovery Server

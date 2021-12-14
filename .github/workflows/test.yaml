@@ -17,9 +17,10 @@ jobs:
 
     - name: Deploy Fast DDS Discovery Server
       run: |
-        trap 'echo timeout' SIGTERM
+        trap 'echo stopped without error' SIGTERM
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
         timeout 60 docker-compose -f docker-compose.discovery-server.yml up
+        echo $?
         
   start-listener:
     runs-on: ubuntu-20.04
@@ -31,9 +32,10 @@ jobs:
   
     - name: Deploy Listener
       run: |
-        trap 'echo timeout' SIGTERM
+        trap 'echo stopped without error' SIGTERM
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
         timeout 60 docker-compose -f docker-compose.listener.yml up
+        echo $?
       
   start-talker:
     runs-on: ubuntu-20.04
@@ -45,6 +47,7 @@ jobs:
 
     - name: Deploy Talker
       run: |
-        trap 'echo timeout' SIGTERM
+        trap 'echo stopped without error' SIGTERM
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
         timeout 60 docker-compose -f docker-compose.talker.yml up
+        echo $?

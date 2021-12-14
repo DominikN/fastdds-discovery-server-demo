@@ -1,6 +1,6 @@
 # fastdds-discovery-server-demo
 
-Using [FastDDS Discovery Server](https://docs.ros.org/en/foxy/Tutorials/Discovery-Server/Discovery-Server.html) over the Internet with VPN.
+Using [Fast DDS Discovery Server](https://docs.ros.org/en/foxy/Tutorials/Discovery-Server/Discovery-Server.html) with multiple hosts connected over the Internet with Husarnet p2p VPN. **No public IP required.**
 
 [![Build a Docker Image](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/build_push.yaml/badge.svg)](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/build_push.yaml)
 [![Test a Docker Deployment](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/test.yaml/badge.svg)](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/test.yaml)

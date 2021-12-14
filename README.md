@@ -2,13 +2,15 @@
 
 Using [FastDDS Discovery Server](https://docs.ros.org/en/foxy/Tutorials/Discovery-Server/Discovery-Server.html) over the Internet with VPN.
 
+[![Build/Publish Docker Image](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/build_push.yaml/badge.svg)](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/build_push.yaml)
+
 ## Intro
 
 According to the docs: *the Fast DDS Discovery Server protocol is a feature that offers a centralized dynamic discovery mechanism, as opposed to the distributed mechanism used in DDS by default.*
 
 This feature is especially important for ROS 2 devices that are not connected to the same WiFi router, and thus multicasting (used for a standard DDS discovery) is not efficient enough, not convenient or even is not possible.
 
-This repo presents how to use the Discovery Server in a ROS 2 talker/listener demo. Each device can be in different network, and public IP is not required.
+This repo presents **how to use FastDDS Discovery Server in a ROS 2 talker/listener demo**. Each device can be in different network, and public IP is not required.
 
 The Discovery Server is used only for a service discovery phase. The actual messages are forwarded p2p between devices thanks to [Husarnet VPN](https://github.com/husarnet/husarnet).
 

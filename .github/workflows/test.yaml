@@ -1,0 +1,36 @@
+name: Test docker deployment
+
+on:
+  workflow_run:
+    workflows: ["Build/Publish Docker Image"]
+    branches: [main]
+    types:
+      - completed
+  
+jobs:
+  start-discovery-server:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Deploy Fast DDS Discovery Server
+      run: |
+        echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
+        docker-compose -f docker-compose.discovery-server.yml up
+        
+  start-listener:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Deploy Fast DDS Discovery Server
+      run: |
+        echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
+        docker-compose -f docker-compose.listener.yml up
+      
+  start-talker:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Deploy Fast DDS Discovery Server
+      run: |
+        echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
+        docker-compose -f docker-compose.talker.yml up

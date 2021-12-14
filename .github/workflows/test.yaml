@@ -17,14 +17,13 @@ jobs:
 
     - name: Deploy Fast DDS Discovery Server
       continue-on-error: true
-      # timeout-minutes: 1
+      timeout-minutes: 1
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
-        timeout 60 docker-compose -f docker-compose.discovery-server.yml up
-        echo "exit code of last cmd is $?"
+        docker-compose -f docker-compose.discovery-server.yml up | tee output.txt
 
-    - name: Exit code of last command
-      run: echo $?
+    - name: Check if the log contains Hello World string
+      run: if [[ $(grep 'Hello World' output.txt | wc -l) -eq 0 ]]; then exit 1; fi
 
   start-listener:
     runs-on: ubuntu-20.04
@@ -36,14 +35,13 @@ jobs:
   
     - name: Deploy Listener
       continue-on-error: true
-      # timeout-minutes: 1
+      timeout-minutes: 1
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
-        timeout 60 docker-compose -f docker-compose.listener.yml up
-        echo "exit code of last cmd is $?"
+        docker-compose -f docker-compose.listener.yml up | tee output.txt
 
-    - name: Exit code of last command
-      run: echo $?
+    - name: Check if the log contains Hello World string
+      run: if [[ $(grep 'Hello World' output.txt | wc -l) -eq 0 ]]; then exit 1; fi
 
   start-talker:
     runs-on: ubuntu-20.04
@@ -55,11 +53,10 @@ jobs:
 
     - name: Deploy Talker
       continue-on-error: true
-      # timeout-minutes: 1
+      timeout-minutes: 1
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
-        timeout 60 docker-compose -f docker-compose.talker.yml up
-        echo "exit code of last cmd is $?"
+        docker-compose -f docker-compose.talker.yml up | tee output.txt
 
-    - name: Exit code of last command
-      run: echo $?
+    - name: Check if the log contains Hello World string
+      run: if [[ $(grep 'Hello World' output.txt | wc -l) -eq 0 ]]; then exit 1; fi

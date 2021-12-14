@@ -16,10 +16,9 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Deploy Fast DDS Discovery Server
-      timeout-minutes: 2
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
-        docker-compose -f docker-compose.discovery-server.yml up
+        timeout 60 docker-compose -f docker-compose.discovery-server.yml up
         
   start-listener:
     runs-on: ubuntu-20.04
@@ -30,10 +29,9 @@ jobs:
       uses: actions/checkout@v1
   
     - name: Deploy Listener
-      timeout-minutes: 2
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
-        docker-compose -f docker-compose.listener.yml up
+        timeout 60 docker-compose -f docker-compose.listener.yml up
       
   start-talker:
     runs-on: ubuntu-20.04
@@ -44,7 +42,6 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Deploy Talker
-      timeout-minutes: 2
       run: |
         echo JOINCODE=${{ secrets.HUSARNET_JOINCODE }} > .env
-        docker-compose -f docker-compose.talker.yml up
+        timeout 60 docker-compose -f docker-compose.talker.yml up

@@ -93,31 +93,32 @@ docker-compose -f docker-compose.talker.yml up
 Eg. log from a `listener` deployment:
 
 ```
-Status: Downloaded newer image for ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
+ Status: Downloaded newer image for ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
 Creating fastdds-discovery-server-demo_husarnet-listener_1 ... done
 Creating fastdds-discovery-server-demo_listener_1          ... done
 Attaching to fastdds-discovery-server-demo_husarnet-listener_1, fastdds-discovery-server-demo_listener_1
 husarnet-listener_1  | [step 1/3] Waiting for Husarnet daemon to start
 husarnet-listener_1  | ...
-listener_1           | Waiting for "ddsdiscoveryserver" host to be available in /etc/hosts
 husarnet-listener_1  | done
 husarnet-listener_1  | 
 husarnet-listener_1  | [step 2/3] Waiting for Base Server connection
 husarnet-listener_1  | ...
+listener_1           | Waiting for "dds-discovery-server" host to be available in /etc/hosts
 husarnet-listener_1  | ...
 husarnet-listener_1  | ...
 husarnet-listener_1  | done
 husarnet-listener_1  | 
 husarnet-listener_1  | [step 3/3] Joining to Husarnet network
-husarnet-listener_1  | [101936] joining...
-husarnet-listener_1  | [103937] joining...
-husarnet-listener_1  | [105938] done.
-husarnet-listener_1  | Husarnet IP address: fc94:4e50:0d8d:ef01:574d:84a4:cb8e:0e1c
-listener_1           | "ddsdiscoveryserver" present in /etc/hosts:
-listener_1           | fc94:358e:ae01:817c:7d90:9ab9:ce34:9847 ddsdiscoveryserver # managed by Husarnet
+husarnet-listener_1  | [85082] joining...
+husarnet-listener_1  | [87083] joining...
+husarnet-listener_1  | [89083] done.
+husarnet-listener_1  | Husarnet IP address: fc94:2c41:e14f:842b:c456:8ab6:915d:2866
+listener_1           | "dds-discovery-server" present in /etc/hosts:
+listener_1           | fc94:acec:4daf:30b6:f28b:1f9a:f683:0638 dds-discovery-server # managed by Husarnet
 listener_1           | Ready to launch ROS 2 nodes
-listener_1           | [INFO] [1639527543.659109717] [listener]: I heard: [Hello World: 4]
-listener_1           | [INFO] [1639527544.659111952] [listener]: I heard: [Hello World: 5]
-listener_1           | [INFO] [1639527545.658804974] [listener]: I heard: [Hello World: 6]
-listener_1           | [INFO] [1639527546.659185904] [listener]: I heard: [Hello World: 7]
+listener_1           | [INFO] [1639528088.384928610] [listener]: I heard: [Hello World: 2]
+listener_1           | [INFO] [1639528089.385449769] [listener]: I heard: [Hello World: 3]
+listener_1           | [INFO] [1639528090.384367537] [listener]: I heard: [Hello World: 4]
+listener_1           | [INFO] [1639528091.386316521] [listener]: I heard: [Hello World: 5]
+listener_1           | [INFO] [1639528092.384956587] [listener]: I heard: [Hello World: 6]
 ```

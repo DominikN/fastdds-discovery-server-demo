@@ -33,6 +33,6 @@ services:
     devices:
       - /dev/net/tun
     environment:
-      - HOSTNAME=ddsdiscoveryserver
+      - HOSTNAME=dds-discovery-server
     env_file:
       - ./.env  # create .env file in the same folder

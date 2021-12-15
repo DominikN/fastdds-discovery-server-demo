@@ -23,7 +23,7 @@
                                 <metatrafficUnicastLocatorList>
                                     <locator>
                                         <udpv6>
-                                            <address>ddsdiscoveryserver</address>
+                                            <address>dds-discovery-server</address>
                                             <port>11811</port>
                                         </udpv6>
                                     </locator>

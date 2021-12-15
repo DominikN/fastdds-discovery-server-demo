@@ -1,4 +1,4 @@
-name: Test a docker deployment
+name: Test a Docker Deployment
 
 on:
   workflow_run:

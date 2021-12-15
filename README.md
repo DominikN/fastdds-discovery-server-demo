@@ -1,6 +1,6 @@
 # fastdds-discovery-server-demo
 
-Using [Fast DDS Discovery Server](https://docs.ros.org/en/foxy/Tutorials/Discovery-Server/Discovery-Server.html) with multiple hosts connected over the Internet with Husarnet p2p VPN. **No public IP required.**
+Using [Fast DDS Discovery Server](https://docs.ros.org/en/foxy/Tutorials/Discovery-Server/Discovery-Server.html) with multiple hosts connected over the Internet with Husarnet p2p VPN. 
 
 [![Build a Docker Image](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/build_push.yaml/badge.svg)](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/build_push.yaml)
 [![Test a Docker Deployment](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/test.yaml/badge.svg)](https://github.com/DominikN/fastdds-discovery-server-demo/actions/workflows/test.yaml)
@@ -11,15 +11,15 @@ According to the docs: *the Fast DDS Discovery Server protocol is a feature that
 
 This feature is especially important for ROS 2 devices that are not connected to the same WiFi router, and thus multicasting (used for a standard DDS discovery) is not efficient enough, not convenient or even is not possible.
 
-This repo presents **how to use FastDDS Discovery Server in a ROS 2 talker/listener demo**. Each device can be in different network, and public IP is not required.
+This repo presents **how to use FastDDS Discovery Server in a ROS 2 talker/listener demo**. Each device can be in different network, and **public IP is not required**.
 
-The Discovery Server is used only for a service discovery phase. The actual messages are forwarded p2p between devices thanks to [Husarnet VPN](https://github.com/husarnet/husarnet).
+The Discovery Server is used only during a service discovery phase. The actual messages are forwarded with minimal latency between devices thanks to [Husarnet peer-to-peer VPN](https://github.com/husarnet/husarnet).
 
 ## Get your Husarnet Join Code
 
-Before running examples get your **Husarnet Join Code**, that you will use to connect Docker containers to the same P2P VPN network.
+Before running examples get your **Husarnet Join Code**. You will use it to connect Docker containers to the same VPN network.
 
-At first rename `.env.template` files to `.env`.
+At first rename `.env.template` file to `.env`.
 
 You will find your Join Code at **https://app.husarnet.com  
  -> Click on the desired network  
@@ -58,13 +58,14 @@ build: ./docker_image
 
 ## Deployment
 
-Prepare 3 devices (laptop, Raspberry Pi etc.) with Docker and Docker-Compose installed. They could be in the same, or in different Ethernet/WiFi/LTE networks.
+Prepare 3 devices (eg. laptop, Raspberry Pi etc.) with Docker and Docker-Compose installed. They could be in the same, or in different Ethernet/WiFi/LTE networks.
 
 > **💡 Tip**
 >
-> You can also run those three Docker Compose deployments on one laptop if you don't want to test it over the Internet
+> You can also run those 3 Docker Compose deployments on one laptop if you don't want to test it over the Internet
 
 In this demo we will deploy different `docker.compose.yml` files on different devices:
+
 - **DDS Discovery Server** launched by `docker-compose.discovery-server.yml`
 - **Listener** (from [demo-nodes-cpp](https://github.com/ros2/demos/tree/master/demo_nodes_cpp) ROS 2 package) launched by `docker-compose.listener.yml`
 - **Talker** (from [demo-nodes-cpp](https://github.com/ros2/demos/tree/master/demo_nodes_cpp) ROS 2 package) launched by `docker-compose.talker.yml`
@@ -85,4 +86,37 @@ docker-compose -f docker-compose.listener.yml up
 
 ```bash
 docker-compose -f docker-compose.talker.yml up
+```
+
+## Result
+
+Eg. log from a `listener` deployment:
+
+```
+Creating fastdds-discovery-server-demo_husarnet-listener_1 ... done
+Creating fastdds-discovery-server-demo_listener_1          ... done
+Attaching to fastdds-discovery-server-demo_husarnet-listener_1, fastdds-discovery-server-demo_listener_1
+husarnet-listener_1  | [step 1/3] Waiting for Husarnet daemon to start
+husarnet-listener_1  | ...
+listener_1           | Waiting for ddsdiscoveryserver device to be available in /etc/hosts
+husarnet-listener_1  | done
+husarnet-listener_1  | 
+husarnet-listener_1  | [step 2/3] Waiting for Base Server connection
+husarnet-listener_1  | ...
+husarnet-listener_1  | ...
+husarnet-listener_1  | ...
+husarnet-listener_1  | done
+husarnet-listener_1  | 
+husarnet-listener_1  | [step 3/3] Joining to Husarnet network
+husarnet-listener_1  | [140107] joining...
+husarnet-listener_1  | [142108] joining...
+husarnet-listener_1  | [144109] done.
+husarnet-listener_1  | Husarnet IP address: fc94:dbbf:4358:2108:11b1:0d8a:6e0a:5148
+listener_1           | fc94:8058:37f9:d229:c9d3:86d3:ab2b:159b ddsdiscoveryserver # managed by Husarnet
+listener_1           | ddsdiscoveryserver present in /etc/hosts
+listener_1           | [INFO] [1639513053.891237629] [listener]: I heard: [Hello World: 4]
+listener_1           | [INFO] [1639513054.896118758] [listener]: I heard: [Hello World: 5]
+listener_1           | [INFO] [1639513055.891532078] [listener]: I heard: [Hello World: 6]
+listener_1           | [INFO] [1639513056.891463050] [listener]: I heard: [Hello World: 7]
+listener_1           | [INFO] [1639513057.891560024] [listener]: I heard: [Hello World: 8]
 ```

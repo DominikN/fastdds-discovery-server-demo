@@ -98,7 +98,7 @@ Creating fastdds-discovery-server-demo_listener_1          ... done
 Attaching to fastdds-discovery-server-demo_husarnet-listener_1, fastdds-discovery-server-demo_listener_1
 husarnet-listener_1  | [step 1/3] Waiting for Husarnet daemon to start
 husarnet-listener_1  | ...
-listener_1           | Waiting for ddsdiscoveryserver device to be available in /etc/hosts
+listener_1           | Waiting for "ddsdiscoveryserver" host to be available in /etc/hosts
 husarnet-listener_1  | done
 husarnet-listener_1  | 
 husarnet-listener_1  | [step 2/3] Waiting for Base Server connection
@@ -108,15 +108,15 @@ husarnet-listener_1  | ...
 husarnet-listener_1  | done
 husarnet-listener_1  | 
 husarnet-listener_1  | [step 3/3] Joining to Husarnet network
-husarnet-listener_1  | [140107] joining...
-husarnet-listener_1  | [142108] joining...
-husarnet-listener_1  | [144109] done.
-husarnet-listener_1  | Husarnet IP address: fc94:dbbf:4358:2108:11b1:0d8a:6e0a:5148
-listener_1           | fc94:8058:37f9:d229:c9d3:86d3:ab2b:159b ddsdiscoveryserver # managed by Husarnet
-listener_1           | ddsdiscoveryserver present in /etc/hosts
-listener_1           | [INFO] [1639513053.891237629] [listener]: I heard: [Hello World: 4]
-listener_1           | [INFO] [1639513054.896118758] [listener]: I heard: [Hello World: 5]
-listener_1           | [INFO] [1639513055.891532078] [listener]: I heard: [Hello World: 6]
-listener_1           | [INFO] [1639513056.891463050] [listener]: I heard: [Hello World: 7]
-listener_1           | [INFO] [1639513057.891560024] [listener]: I heard: [Hello World: 8]
+husarnet-listener_1  | [113550] joining...
+husarnet-listener_1  | [115551] joining...
+husarnet-listener_1  | [117552] done.
+husarnet-listener_1  | Husarnet IP address: fc94:2d06:2252:4c24:f214:815e:fc13:5703
+listener_1           | "ddsdiscoveryserver" present in /etc/hosts:
+listener_1           | fc94:3087:c846:f00b:5649:4d19:9436:a1a4 ddsdiscoveryserver # managed by Husarnet
+listener_1           | [INFO] [1639526642.398818137] [listener]: I heard: [Hello World: 2]
+listener_1           | [INFO] [1639526643.396153300] [listener]: I heard: [Hello World: 3]
+listener_1           | [INFO] [1639526644.395698379] [listener]: I heard: [Hello World: 4]
+listener_1           | [INFO] [1639526645.320585014] [listener]: I heard: [Hello World: 5]
+listener_1           | [INFO] [1639526646.305184684] [listener]: I heard: [Hello World: 6]
 ```

@@ -93,6 +93,7 @@ docker-compose -f docker-compose.talker.yml up
 Eg. log from a `listener` deployment:
 
 ```
+Status: Downloaded newer image for ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
 Creating fastdds-discovery-server-demo_husarnet-listener_1 ... done
 Creating fastdds-discovery-server-demo_listener_1          ... done
 Attaching to fastdds-discovery-server-demo_husarnet-listener_1, fastdds-discovery-server-demo_listener_1
@@ -108,15 +109,15 @@ husarnet-listener_1  | ...
 husarnet-listener_1  | done
 husarnet-listener_1  | 
 husarnet-listener_1  | [step 3/3] Joining to Husarnet network
-husarnet-listener_1  | [113550] joining...
-husarnet-listener_1  | [115551] joining...
-husarnet-listener_1  | [117552] done.
-husarnet-listener_1  | Husarnet IP address: fc94:2d06:2252:4c24:f214:815e:fc13:5703
+husarnet-listener_1  | [101936] joining...
+husarnet-listener_1  | [103937] joining...
+husarnet-listener_1  | [105938] done.
+husarnet-listener_1  | Husarnet IP address: fc94:4e50:0d8d:ef01:574d:84a4:cb8e:0e1c
 listener_1           | "ddsdiscoveryserver" present in /etc/hosts:
-listener_1           | fc94:3087:c846:f00b:5649:4d19:9436:a1a4 ddsdiscoveryserver # managed by Husarnet
-listener_1           | [INFO] [1639526642.398818137] [listener]: I heard: [Hello World: 2]
-listener_1           | [INFO] [1639526643.396153300] [listener]: I heard: [Hello World: 3]
-listener_1           | [INFO] [1639526644.395698379] [listener]: I heard: [Hello World: 4]
-listener_1           | [INFO] [1639526645.320585014] [listener]: I heard: [Hello World: 5]
-listener_1           | [INFO] [1639526646.305184684] [listener]: I heard: [Hello World: 6]
+listener_1           | fc94:358e:ae01:817c:7d90:9ab9:ce34:9847 ddsdiscoveryserver # managed by Husarnet
+listener_1           | Ready to launch ROS 2 nodes
+listener_1           | [INFO] [1639527543.659109717] [listener]: I heard: [Hello World: 4]
+listener_1           | [INFO] [1639527544.659111952] [listener]: I heard: [Hello World: 5]
+listener_1           | [INFO] [1639527545.658804974] [listener]: I heard: [Hello World: 6]
+listener_1           | [INFO] [1639527546.659185904] [listener]: I heard: [Hello World: 7]
 ```

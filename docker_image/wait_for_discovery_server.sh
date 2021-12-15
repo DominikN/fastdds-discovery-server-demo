@@ -10,3 +10,6 @@ echo "\"ddsdiscoveryserver\" present in /etc/hosts:"
 
 # print the IPv6 address of the Discovery Server
 grep 'ddsdiscoveryserver' /etc/hosts
+
+echo "Ready to launch ROS 2 nodes"
+

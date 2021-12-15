@@ -93,7 +93,7 @@ docker-compose -f docker-compose.talker.yml up
 Eg. log from a `listener` deployment:
 
 ```
- Status: Downloaded newer image for ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
+Status: Downloaded newer image for ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
 Creating fastdds-discovery-server-demo_husarnet-listener_1 ... done
 Creating fastdds-discovery-server-demo_listener_1          ... done
 Attaching to fastdds-discovery-server-demo_husarnet-listener_1, fastdds-discovery-server-demo_listener_1

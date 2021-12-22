@@ -1,0 +1,32 @@
+# TL;DR
+# docker-compose -f docker-compose.talker-listener-basic.yml up
+
+version: '2.3'
+
+services:
+
+  talker:
+    # build: ./docker_image
+    image: ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
+    restart: unless-stopped
+    environment:
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+    command:
+      - bash
+      - -c
+      - |
+          source /fastdds_overlay/install/setup.bash
+          ros2 run demo_nodes_cpp talker
+
+  listener:
+    # build: ./docker_image
+    image: ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
+    restart: unless-stopped
+    environment:
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+    command:
+      - bash
+      - -c
+      - |
+          source /fastdds_overlay/install/setup.bash
+          ros2 run demo_nodes_cpp listener

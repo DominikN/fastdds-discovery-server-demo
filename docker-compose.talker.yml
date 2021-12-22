@@ -37,7 +37,7 @@ services:
     env_file:
       - ./.env  # create .env file in the same folder
 
-  listener:
+  internal-listener:
     # build: ./docker_image
     image: ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
     restart: unless-stopped

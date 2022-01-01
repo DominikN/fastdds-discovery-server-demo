@@ -44,17 +44,7 @@ docker pull ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
 
 ### Local build
 
-If you want to build your own image, modify all `docker-compose.*.yml` files in the repo by replacing line ...
-
-```yml 
-image: ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
-```
-
-with ...
-
-```yml
-build: ./docker_image
-```
+The Docker image is built from this repo: https://github.com/DominikN/ros-galactic-fastdds.
 
 ## Deployment
 

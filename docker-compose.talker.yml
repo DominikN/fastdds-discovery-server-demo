@@ -6,10 +6,11 @@ version: '2.3'
 services:
 
   talker:
-    # build: ./docker_image
-    image: ghcr.io/dominikn/ros-galactic-fastdds:v2.4.0
+    image: ghcr.io/dominikn/ros-galactic-fastdds:latest
     restart: unless-stopped
     network_mode: service:husarnet-talker
+    volumes:
+      - ./fastdds_client.xml:/fastdds_client.xml
     environment:
       - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
       - FASTRTPS_DEFAULT_PROFILES_FILE=/fastdds_client.xml

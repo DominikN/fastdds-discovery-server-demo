@@ -1,10 +1,9 @@
 name: Test a Docker Deployment
 
 on:
-  workflow_run:
-    workflows: ["Build a Docker Image"]
-    types:
-      - completed
+  push:
+    branches:
+      - 'main'
   
 jobs:
   test-discovery-server:

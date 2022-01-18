@@ -12,13 +12,11 @@ services:
     volumes:
       - ./fastdds_client.xml:/fastdds_client.xml
     environment:
-      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
       - FASTRTPS_DEFAULT_PROFILES_FILE=/fastdds_client.xml
     command:
       - bash
       - -c
       - |
-          source /fastdds_overlay/install/setup.bash
           /wait_for_discovery_server.sh
           ros2 run demo_nodes_cpp talker
 

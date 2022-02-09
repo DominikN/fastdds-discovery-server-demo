@@ -26,7 +26,7 @@ You will find your Join Code at **https://app.husarnet.com
  -> `Add element` button  
  -> `Join code` tab**
 
-…and change the `JOINCODE` variable in the `.env` files.
+…and change the `HUSARNET_JOINCODE` variable in the `.env` files.
 
 ## Get the `ros:galactic` image with `Fast DDS v2.4.0`
 

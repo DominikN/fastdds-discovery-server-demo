@@ -33,4 +33,4 @@ services:
       - /dev/net/tun
     environment:
       - HOSTNAME=listener
-      - JOINCODE=${HUSARNET_JOINCODE}}
+      - JOINCODE=${HUSARNET_JOINCODE}

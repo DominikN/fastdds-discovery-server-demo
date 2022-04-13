@@ -109,5 +109,4 @@ listener_1           | Ready to launch ROS 2 nodes
 listener_1           | [INFO] [1639528088.384928610] [listener]: I heard: [Hello World: 2]
 listener_1           | [INFO] [1639528089.385449769] [listener]: I heard: [Hello World: 3]
 listener_1           | [INFO] [1639528090.384367537] [listener]: I heard: [Hello World: 4]
-listener_1           | [INFO] [1639528091.386316521] [listener]: I heard: [Hello World: 5]
 ```

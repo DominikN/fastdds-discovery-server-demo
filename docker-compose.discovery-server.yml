@@ -34,5 +34,4 @@ services:
       - /dev/net/tun
     environment:
       - HOSTNAME=dds-discovery-server
-    env_file:
-      - ./.env  # create .env file in the same folder
+      - JOINCODE=${HUSARNET_JOINCODE} # create .env file in the same folder

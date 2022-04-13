@@ -34,8 +34,7 @@ services:
       - /dev/net/tun
     environment:
       - HOSTNAME=talker
-    env_file:
-      - ./.env  # create .env file in the same folder
+      - JOINCODE=${HUSARNET_JOINCODE} # create .env file in the same folder
 
   internal-listener:
     # build: ./docker_image

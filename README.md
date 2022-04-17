@@ -63,19 +63,19 @@ In this demo we will deploy different `docker.compose.yml` files on different de
 ### DDS Discovery Server
 
 ```bash
-docker-compose -f docker-compose.discovery-server.yml up
+docker compose -f compose.discovery-server.yaml up
 ```
 
 ### Listener
 
 ```bash
-docker-compose -f docker-compose.listener.yml up
+docker compose -f compose.listener.yaml up
 ```
 
 ### Talker
 
 ```bash
-docker-compose -f docker-compose.talker.yml up
+docker compose -f compose.talker.yaml up
 ```
 
 ## Result

@@ -1,5 +1,5 @@
 # TL;DR
-# docker compose -f docker-compose.discovery-server.yml up
+# docker compose -f compose.discovery-server.yaml up
 
 services:
 

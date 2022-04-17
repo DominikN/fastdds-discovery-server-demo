@@ -6,7 +6,7 @@ version: '2.3'
 services:
 
   discovery-server:
-    image: ghcr.io/dominikn/ros-galactic-fastdds:latest
+    image: donowak/ros:galactic-ros-core
     restart: unless-stopped
     network_mode: service:husarnet-discovery-server
     volumes:

@@ -13,11 +13,12 @@ services:
       - ./fastdds_server.xml:/fastdds_server.xml
     environment:
       - FASTRTPS_DEFAULT_PROFILES_FILE=/fastdds_server.xml
+      - DS_HOSTNAME=dds-discovery-server
     command:
       - bash
       - -c
       - |
-          /wait_for_discovery_server.sh
+          /wait_ds.sh
           ros2 run demo_nodes_cpp listener
 
   husarnet-discovery-server:

@@ -28,4 +28,4 @@ jobs:
         docker compose -f compose.${{ matrix.device-id }}.yml up | tee output.txt
 
     - name: "Check if the log contains '[listener]: I heard: [Hello World' string"
-      run: "if [[ $(grep '\[listener\]: I heard: \[Hello World' output.txt | wc -l) -eq 0 ]]; then exit 1; fi"
+      run: "if [[ $(grep '\\[listener\\]: I heard: \\[Hello World' output.txt | wc -l) -eq 0 ]]; then exit 1; fi"

@@ -1,13 +1,10 @@
 # TL;DR
-# docker-compose -f docker-compose.discovery-server.yml up
-
-version: '2.3'
+# docker compose -f docker-compose.discovery-server.yml up
 
 services:
 
-  discovery-server:
+  listener-discovery-server:
     build: .
-    restart: unless-stopped
     network_mode: service:husarnet-discovery-server
     volumes:
       - ./fastdds_server.xml:/fastdds_server.xml
@@ -23,7 +20,6 @@ services:
 
   husarnet-discovery-server:
     image: husarnet/husarnet
-    restart: unless-stopped
     volumes:
       - /var/lib/husarnet  # This will persist your Husarnet Client keys, thus IP of the container will be stable/the same between (re)boots
     sysctls:

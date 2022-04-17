@@ -1,13 +1,10 @@
 # TL;DR
-# docker-compose -f docker-compose.listener.yml up
-
-version: '2.3'
+# docker compose -f docker-compose.listener.yml up
 
 services:
 
-  listener:
+  listener-remote:
     build: .
-    restart: unless-stopped
     network_mode: service:husarnet-listener
     volumes:
       - ./fastdds_client.xml:/fastdds_client.xml
@@ -23,7 +20,6 @@ services:
 
   husarnet-listener:
     image: husarnet/husarnet
-    restart: unless-stopped
     volumes:
       - /var/lib/husarnet  # This will persist your Husarnet Client keys, thus IP of the container will be stable/the same between (re)boots
     sysctls:

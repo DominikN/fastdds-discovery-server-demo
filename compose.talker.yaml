@@ -5,7 +5,6 @@ services:
 
   talker:
     build: .
-    restart: unless-stopped
     network_mode: service:husarnet-talker
     volumes:
       - ./fastdds_client.xml:/fastdds_client.xml
@@ -21,7 +20,6 @@ services:
 
   listener-local:
     build: .
-    restart: unless-stopped
     network_mode: service:husarnet-talker
     volumes:
       - ./fastdds_client.xml:/fastdds_client.xml
@@ -37,7 +35,6 @@ services:
 
   husarnet-talker:
     image: husarnet/husarnet
-    restart: unless-stopped
     volumes:
       - /var/lib/husarnet  # This will persist your Husarnet Client keys, thus IP of the container will be stable/the same between (re)boots
     sysctls:
